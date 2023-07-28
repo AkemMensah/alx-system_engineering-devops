@@ -15,37 +15,24 @@
 #       Creates a file containing its PID in /var/run/my_process.pid
 #       Displays "manage_my_process restarted"
 #   If any other or no arguments are passed, displays
-#  +  "Usage: manage_my_process {start|stop|restart}"
+#  +  "Usage: manage_my_process {start|stop|rest}
 
-if [ "${1}" == "start" ]
-
-then
-
-    ./manage_my_process &
-    touch /var/run/my_process.pid
-    echo "$!" > /var/run/my_process.pid
-    echo "manage_my_process started"
-
-elif [ "${1}" == "stop" ]
-
-then
-
-    echo "manage_my_process stopped"
-    kill "$(cat /var/run/my_process.pid)"
-    rm /var/run/my_process.pid
-elif [ "${1}" == "restart" ]
-
-then
-
-    kill "$(cat /var/run/my_process.pid)"
-    rm /var/run/my_process.pid
-    ./manage_my_process &
-    touch /var/run/my_process.pid
-    echo "$!" > /var/run/my_process.pid
-    echo "manage_my_process restarted"
-
+file=/var/run/my_process.pid
+proc=manage_my_process
+if [ "$1" = "start" ]; then
+	./"$proc" & 
+	echo "$!" > "$file"
+	echo "$proc" started
+elif [ "$1" = "stop" ]; then
+	pkill -SIGKILL -f ./"$proc"
+       	rm "$file"
+	echo "$proc" stopped
+elif [ "$1" = "restart" ]; then
+	pkill -SIGKILL -f ./"$proc"
+       	rm "$file"
+	./"$proc" &
+	echo "$!" > "$file"
+	echo "$proc" restarted
 else
-
-    echo "Usage: manage_my_process {start|stop|restart}"
-
+	echo "Usage: manage_my_process {start|stop|restart}"
 fi
