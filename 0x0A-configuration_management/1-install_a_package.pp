@@ -1,7 +1,6 @@
-# Installs Flask version 2.1.0 using pip3
+# puppet script to install flask from pip3.
 
-exec { 'install_flask':
-  command     => 'pip3 install Flask==2.1.0',
-  path        => '/usr/local/bin:/usr/bin:/bin',
-  refreshonly => true,
+package { 'flask':
+  ensure   => '2.1.0',
+  provider => 'pip3',
 }
