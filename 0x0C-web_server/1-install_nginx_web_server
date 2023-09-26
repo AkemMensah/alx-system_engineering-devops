@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 # Installs Nginx
 
-apt-get update
-apt-get install -y nginx
-echo "Hello World!" > /var/www/html/index.html
-echo "server {
+sudo apt-get update
+sudo apt-get install -y nginx
+
+sudo chown -R $(whoami) /etc/nginx/sites-available/
+sudo chown -R $(whoami) /var/www/html/
+sudo echo "Hello World!" > /var/www/html/index.html
+sudo echo "server {
     listen 80;
     server_name _;
 
@@ -13,4 +16,4 @@ echo "server {
     index index.html;
 }
 }" > /etc/nginx/sites-available/default
-service nginx start
+sudo service nginx start
