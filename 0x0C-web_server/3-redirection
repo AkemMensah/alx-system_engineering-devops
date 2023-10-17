@@ -10,9 +10,9 @@ sudo 'chown -R $(whoami)' /var/www/html/
 echo "Hello World!" > /etc/nginx/html/index.html
 echo "server {
     listen 80;
-    #listen [::]:80 default_server;
-    #root   /etc/nginx/html;
-    #index  index.html;
+    listen [::]:80 default_server;
+    root   /etc/nginx/html;
+    index  index.html;
 
     location /redirect_me {
         return 301 https://google.com;
