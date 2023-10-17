@@ -3,8 +3,8 @@
 
 apt-get update
 apt-get install -y nginx
-sudo chown -R $(whoami) /etc/nginx/sites-available/
-sudo chown -R $(whoami) /var/www/html/
+sudo 'chown -R $(whoami)' /etc/nginx/sites-available/
+sudo 'chown -R $(whoami)' /var/www/html/
 
 service nginx start
 mkdir /etc/nginx/html
