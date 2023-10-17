@@ -24,6 +24,7 @@ echo "server {
     location = /404.html{
         root /etc/nginx/html;
         internal;
-    }
+	return 404 'Ceci n'est pas une page';
+	}
 }" > /etc/nginx/sites-available/default
 service nginx restart
