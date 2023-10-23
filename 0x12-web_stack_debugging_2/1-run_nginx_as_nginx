@@ -2,8 +2,8 @@
 # script that configures broken container to work with nginx at port 8080
 
 # kill apache2 instances (running on 8080 on this server)
-service apache2 stop
-pkill apache2
+#service apache2 stop
+#pkill apache2
 
 # configure nginx to run on port 8080
 CONFIG_LOCATION='/etc/nginx/sites-available/default'
@@ -32,4 +32,4 @@ chown nginx /etc/nginx/nginx.conf
 sudo -u nginx chmod u+r /etc/nginx/nginx.conf
 
 # restart nginx as nginx user
-sudo -u nginx service nginx restart
+sudo service nginx restart
