@@ -66,6 +66,7 @@ Tasks
 0. Gather data from an API
 mandatory
 Write a Python script that, using this REST API, for a given employee ID, returns information about his/her TODO list progress.
+NB: https://jsonplaceholder.typicode.com/todos/, https://jsonplaceholder.typicode.com/users
 
 Requirements:
 
