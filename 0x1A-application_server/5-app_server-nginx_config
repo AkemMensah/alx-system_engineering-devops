@@ -39,14 +39,17 @@ server {
     #Serve static content for AirBnB_clone_v4
     location /static {
         alias web_dynamic/static/;
-       }
+    }
 
     location /redirect_me {
-            return 301 http://google.com/;
-                }
+           return 301 http://google.com/;
+	    }
+
    error_page 404 /404.html;
+
+
    location /404 {
          root /var/www/html;
          internal;
           }
-   }
+  }
